@@ -1,0 +1,3 @@
+[submodule "src/modules/staircase-lighting"]
+	path = src/modules/staircase-lighting
+	url = git@github.com:Chariyski/staircase-lighting.git
