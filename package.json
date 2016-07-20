@@ -1,0 +1,23 @@
+{
+  "name": "home-automation",
+  "version": "0.0.0",
+  "description": "",
+  "private": true,
+  "main": "src/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "preinstall": "bower install",
+    "start": "nodemon -e js --watch ./src"
+  },
+  "author": "Krasimir Chariyski <kr.chariyski@gmail.com>",
+  "license": "CC-NC-ND",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "callsite": "^1.0.0",
+    "express": "^4.7.2",
+    "express-handlebars": "^3.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.9.2"
+  }
+}

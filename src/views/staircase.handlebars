@@ -1,0 +1,48 @@
+<div class="columns">
+  <div class="column is-three-quarters">
+
+    <form>
+      <div class="control is-horizontal">
+        <div class="control-label">
+          <label class="label" for="animation">Staircase mode</label>
+        </div>
+        <div class="control is-grouped">
+          <div class="control">
+            <span class="select">
+              <select id="mode">
+                {{#each modes}}
+                  <option value="{{this}}">{{this}}</option>
+                {{/each}}
+              </select>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="control is-horizontal">
+        <div class="control-label">
+          <label class="label" for="animation">Animation type</label>
+        </div>
+        <div class="control is-grouped">
+          <div class="control">
+            <span class="select">
+              <select id="animation">
+                {{#each animations}}
+                  <option value="{{type}}">{{name}}</option>
+                {{/each}}
+              </select>
+            </span>
+          </div>
+
+          <div class="control is-expanded has-icon">
+            <input class="input" id="color" type="color" value={{color}} placeholder="Color">
+            <i class="fa fa-lightbulb-o"></i>
+          </div>
+        </div>
+      </div>
+
+      <button id='submit' class="button is-primary">Submit</button>
+    </form>
+
+  </div>
+</div>
