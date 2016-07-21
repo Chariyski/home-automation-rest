@@ -1,17 +1,13 @@
 'use strict';
 
-var rootControler = function(req, res) {
+var staircaseModel = require('../modules/staircase-lighting/src/index').getModel();
+
+var rootControler = function (req, res) {
   res.render('staircase', {
     title: 'Staircase',
     color: '#00ff00',
-    animations: [{
-      type: 'default',
-      name: 'Default'
-    }, {
-      type: 'test',
-      name: 'test'
-    }],
-    modes: ['one', 'two', 'many more ....']
+    animationModes: staircaseModel.animationModes,
+    workModes: staircaseModel.workModes
   });
 };
 

@@ -1,15 +1,15 @@
-(function() {
+(function () {
   'use strict';
 
-  window.onload = function(event) {
-    document.querySelector('.nav-toggle').onclick = function(event) {
+  window.onload = function (event) {
+    document.querySelector('.nav-toggle').onclick = function (event) {
       document.querySelector('.nav-menu').classList.toggle('is-active');
     };
 
     var submitStaircaseFormButton = document.getElementById('submit');
 
     if (submitStaircaseFormButton) {
-      submitStaircaseFormButton.onclick = function(event) {
+      submitStaircaseFormButton.onclick = function (event) {
         event.preventDefault();
         var request = new XMLHttpRequest();
 
@@ -18,15 +18,15 @@
           return false;
         }
 
-        request.onload = function() {
+        request.onload = function () {
           if (request.status === 200) {
-            alert(JSON.parse(request.response).message);
+            console.log(JSON.parse(request.response).message);
           } else {
-            alert(request.statusText);
+            console.log(request.statusText);
           }
         };
 
-        request.onerror = function(error) {
+        request.onerror = function (error) {
           alert(error);
         };
 
@@ -34,8 +34,8 @@
         request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
         request.send(JSON.stringify({
           color: document.getElementById('color').value,
-          animation: document.getElementById('animation').value,
-          mode: document.getElementById('mode').value
+          animationMode: document.getElementById('animation').value,
+          workMode: document.getElementById('mode').value
         }));
 
       }

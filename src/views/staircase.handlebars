@@ -10,7 +10,7 @@
           <div class="control">
             <span class="select">
               <select id="mode">
-                {{#each modes}}
+                {{#each workModes}}
                   <option value="{{this}}">{{this}}</option>
                 {{/each}}
               </select>
@@ -27,8 +27,8 @@
           <div class="control">
             <span class="select">
               <select id="animation">
-                {{#each animations}}
-                  <option value="{{type}}">{{name}}</option>
+                {{#each animationModes}}
+                  <option value="{{this}}">{{this}}</option>
                 {{/each}}
               </select>
             </span>

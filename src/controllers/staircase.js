@@ -2,9 +2,9 @@
 
 var path = require('path');
 var fs = require('fs');
-var staircaseLight = require('../modules/staircase-lighting/index');
+var StaircaseLight = require('../modules/staircase-lighting/src/index');
 
-staircaseLight.init();
+var staircaseLight = new StaircaseLight();
 
 var staircaseController = function () {
   var post = function (req, res) {
@@ -23,9 +23,10 @@ var staircaseController = function () {
       message: 'The file was saved!'
     });
 
-    staircaseLight.animate({
-      color: parameters.color
-    });
+    staircaseLight.setAnimationMode(parameters.animationMode);
+    staircaseLight.setColor(parameters.color);
+    staircaseLight.setWorkMode(parameters.workMode);
+    staircaseLight.start();
   };
 
   return {
