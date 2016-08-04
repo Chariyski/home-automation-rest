@@ -3,11 +3,11 @@
   "version": "0.0.0",
   "description": "",
   "private": true,
-  "main": "src/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "preinstall": "bower install",
-    "start": "nodemon -e js --watch ./src"
+    "start": "set \"NODE_ENV=production\" && node ./src/index.js",
+    "dev": "set \"NODE_ENV=development\" && nodemon -e js --watch ./src"
   },
   "author": "Krasimir Chariyski <kr.chariyski@gmail.com>",
   "license": "CC-NC-ND",
