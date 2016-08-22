@@ -1,22 +1,19 @@
 'use strict';
 
 var helpers = require('../helpers/utils');
-var staircaseModel = require('../modules/staircase-lighting/src/index').getModel();
-var animationModes = staircaseModel.animationModes.map(function (element) {
-  return helpers.camelCaseToHyphen(element);
-});
-var workModes = staircaseModel.workModes.map(function (element) {
-  return helpers.camelCaseToHyphen(element);
-});
+var staircaseConfigJSONLocation = helpers.getFullPath('../models/staircase.json');
 
+var rootController = function (req, res) {
+  var staircaseConfigJSON = helpers.readJSONSync(staircaseConfigJSONLocation);
 
-var rootControler = function (req, res) {
   res.render('staircase', {
     title: 'Staircase',
-    color: '#00ff00',
-    animationModes: animationModes,
-    workModes: workModes
+    color: staircaseConfigJSON.color,
+    animationModes: staircaseConfigJSON.animationModes,
+    animationMode: staircaseConfigJSON.animationMode,
+    workModes: staircaseConfigJSON.workModes,
+    workMode: staircaseConfigJSON.workMode
   });
 };
 
-module.exports = rootControler;
+module.exports = rootController;

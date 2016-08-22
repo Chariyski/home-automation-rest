@@ -4,20 +4,18 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var exphbs = require('express-handlebars');
 var helpers = require('./helpers/utils');
+var hbHelpers = require('./helpers/handlebars');
 
 var app = express();
 
 var hbs = exphbs.create({
   defaultLayout: helpers.getFullPath('views/layouts/main'),
-  helpers: helpers,
+  helpers: hbHelpers,
   partialsDir: [helpers.getFullPath('views/partials/')]
 });
 
 app.engine('handlebars', hbs.engine);
 
-// app.use(bodyParser.urlencoded({
-//   extended: false
-// }));
 app.use(bodyParser.json());
 app.use('/staircase', require('./routes/staircase'));
 app.use(express.static(helpers.getFullPath('public')));
