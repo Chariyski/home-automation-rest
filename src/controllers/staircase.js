@@ -14,13 +14,26 @@ helpers.saveJSON(staircaseConfigJSONLocation, staircaseLight);
 
 
 var staircaseController = function () {
+  var get = function (req, res) {
+    res.json(staircaseLight);
+  };
+
   var post = function (req, res) {
     var parameters = req.body;
 
-    staircaseLight.setAnimationMode(parameters.animationMode);
-    staircaseLight.setColor(parameters.color);
-    staircaseLight.setWorkMode(parameters.workMode);
-    staircaseLight.start();
+    if (parameters.animationMode) {
+      staircaseLight.setAnimationMode(parameters.animationMode);
+    }
+
+    if (parameters.color) {
+      staircaseLight.setColor(parameters.color);
+    }
+
+    if (parameters.workMode) {
+      staircaseLight.setWorkMode(parameters.workMode);
+    }
+
+    staircaseLight.start(); // TODO add to different rout
 
     helpers.saveJSON(staircaseConfigJSONLocation, staircaseLight, function (responce) {
       res.json({
@@ -30,6 +43,7 @@ var staircaseController = function () {
   };
 
   return {
+    get: get,
     post: post
   }
 };

@@ -1,7 +1,8 @@
 var express = require('express');
 var staircaseRoute = express.Router();
-var rootController = require('../controllers/staircase')();
+var staircaseController = require('../controllers/staircase')();
 
-staircaseRoute.route('/').post(rootController.post);
+staircaseRoute.route('/').post(staircaseController.post);
+staircaseRoute.route('/').get(staircaseController.get);
 
 module.exports = staircaseRoute;
