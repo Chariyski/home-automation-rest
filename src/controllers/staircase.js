@@ -20,24 +20,40 @@ var staircaseController = function () {
 
   var post = function (req, res) {
     var parameters = req.body;
+    console.log(parameters);
 
     if (parameters.animationMode) {
-      staircaseLight.setAnimationMode(parameters.animationMode);
+      var animationMode = parameters.animationMode.trim();
+
+      // Home-assistant currently is not supporting setting a value to drop down.
+      if (staircaseLight[animationMode] === undefined) {
+        animationMode = helpers.RegularFormToCamelCase(animationMode);
+      }
+
+      staircaseLight.setAnimationMode(animationMode);
     }
 
     if (parameters.color) {
-      staircaseLight.setColor(parameters.color);
+      staircaseLight.setColor(parameters.color.trim());
     }
 
     if (parameters.workMode) {
-      staircaseLight.setWorkMode(parameters.workMode);
+      var workMode = parameters.workMode.trim();
+
+      // Home-assistant currently is not supporting setting a value to drop down.
+      if (staircaseLight[workMode] === undefined) {
+        workMode = helpers.RegularFormToCamelCase(workMode);
+      }
+
+      staircaseLight.setWorkMode(workMode);
     }
 
     staircaseLight.start(); // TODO add to different rout
 
     helpers.saveJSON(staircaseConfigJSONLocation, staircaseLight, function (responce) {
       res.json({
-        message: responce.status
+        message: responce.status,
+        staircase: staircaseLight
       });
     });
   };
