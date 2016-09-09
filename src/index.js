@@ -1,14 +1,14 @@
 'use strict';
 
-var express = require('express');
-var bodyParser = require('body-parser');
-var exphbs = require('express-handlebars');
-var helpers = require('./helpers/utils');
-var hbHelpers = require('./helpers/handlebars');
+const express = require('express');
+const bodyParser = require('body-parser');
+const exphbs = require('express-handlebars');
+const helpers = require('./helpers/utils');
+const hbHelpers = require('./helpers/handlebars');
 
-var app = express();
+const app = express();
 
-var hbs = exphbs.create({
+const hbs = exphbs.create({
   defaultLayout: helpers.getFullPath('views/layouts/main'),
   helpers: hbHelpers,
   partialsDir: [helpers.getFullPath('views/partials/')]

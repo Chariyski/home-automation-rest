@@ -1,7 +1,7 @@
 'use strict';
-var fs = require('fs');
-var path = require('path');
-var callsite = require('callsite');
+const fs = require('fs');
+const path = require('path');
+const callsite = require('callsite');
 
 module.exports = {
   camelCaseToHyphen: function (str) {
@@ -28,15 +28,15 @@ module.exports = {
   },
 
   getFullPath: function (relativePath) {
-    var stack = callsite();
-    var requester = stack[1].getFileName();
-    var relativePath = relativePath ? relativePath : '';
+    const stack = callsite();
+    const requester = stack[1].getFileName();
+    const relPath = relativePath ? relativePath : '';
 
-    return path.normalize(path.dirname(requester) + '/' + relativePath);
+    return path.normalize(path.dirname(requester) + '/' + relPath);
   },
 
   readJSONSync: function (file) {
-    var json = {};
+    let json = {};
 
     try {
       json = JSON.parse(fs.readFileSync(file, 'utf8'));

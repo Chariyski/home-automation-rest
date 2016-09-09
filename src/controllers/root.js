@@ -1,18 +1,18 @@
 'use strict';
 
-var helpers = require('../helpers/utils');
-var staircaseConfigJSONLocation = helpers.getFullPath('../models/staircase.json');
+const helpers = require('../helpers/utils');
+const staircaseConfigJSONLocation = helpers.getFullPath('../models/staircase.json');
 
-var rootController = function (req, res) {
-  var staircaseConfigJSON = helpers.readJSONSync(staircaseConfigJSONLocation);
+const rootController = function (req, res) {
+  const staircaseConfigJSON = helpers.readJSONSync(staircaseConfigJSONLocation);
 
   res.render('staircase', {
     title: 'Staircase',
-    color: staircaseConfigJSON.color,
-    animationModes: staircaseConfigJSON.animationModes,
-    animationMode: staircaseConfigJSON.animationMode,
-    workModes: staircaseConfigJSON.workModes,
-    workMode: staircaseConfigJSON.workMode
+    color: staircaseConfigJSON._color,
+    animationModes: staircaseConfigJSON._animationModes,
+    animationMode: staircaseConfigJSON._animationMode,
+    workModes: staircaseConfigJSON._workModes,
+    workMode: staircaseConfigJSON._workMode
   });
 };
 

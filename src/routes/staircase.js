@@ -1,6 +1,6 @@
-var express = require('express');
-var staircaseRoute = express.Router();
-var staircaseController = require('../controllers/staircase')();
+const express = require('express');
+const staircaseRoute = express.Router();
+const staircaseController = require('../controllers/staircase')();
 
 staircaseRoute.route('/').post(staircaseController.post);
 staircaseRoute.route('/').get(staircaseController.get);

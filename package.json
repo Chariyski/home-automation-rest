@@ -11,6 +11,9 @@
   },
   "author": "Krasimir Chariyski <kr.chariyski@gmail.com>",
   "license": "CC-NC-ND",
+  "engines": {
+    "node": ">=6.5.0"
+  },
   "dependencies": {
     "body-parser": "^1.15.2",
     "callsite": "^1.0.0",
