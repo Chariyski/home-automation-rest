@@ -1,0 +1,12 @@
+.custom-form .select,
+.custom-form select {
+  width: 100%;
+}
+.custom-form .control-label {
+  width: 150px;
+  flex: initial;
+}
+
+.justify-content-end {
+  justify-content: flex-end;
+}

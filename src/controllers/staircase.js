@@ -4,13 +4,13 @@ const helpers = require('../helpers/utils');
 const StaircaseLight = require('../modules/staircase-lighting/src/index');
 const staircaseConfigJSONLocation = helpers.getFullPath('../models/staircase.json');
 const staircaseConfigJSON = helpers.readJSONSync(staircaseConfigJSONLocation);
+const staircaseLight = new StaircaseLight();
 
-const staircaseLight = new StaircaseLight({
-  _color: staircaseConfigJSON._color,
-  _workMode: staircaseConfigJSON._workMode,
-  _animationMode: staircaseConfigJSON._animationMode
-});
-helpers.saveJSON(staircaseConfigJSONLocation, staircaseLight);
+staircaseLight.color = staircaseConfigJSON.color || '#ffffff';
+staircaseLight.animationMode = staircaseConfigJSON.animationMode || 'stairByStair';
+staircaseLight.workMode = staircaseConfigJSON.workMode || 'off';
+
+helpers.saveStaircaseConfiguration(staircaseConfigJSONLocation, staircaseLight);
 
 const staircaseController = function () {
   const get = function (req, res) {
@@ -52,10 +52,9 @@ const staircaseController = function () {
 
     staircaseLight.start(); // TODO add to different rout
 
-    helpers.saveJSON(staircaseConfigJSONLocation, staircaseLight, function (responce) {
+    helpers.saveStaircaseConfiguration(staircaseConfigJSONLocation, staircaseLight, function (responce) {
       res.json({
-        message: responce.status,
-        staircase: staircaseLight
+        message: responce.status
       });
     });
   };

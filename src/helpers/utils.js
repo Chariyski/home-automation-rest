@@ -41,7 +41,7 @@ module.exports = {
     try {
       json = JSON.parse(fs.readFileSync(file, 'utf8'));
     } catch (error) {
-      console.log(error);
+      console.log(`${file} is not existing`);
     }
 
     return json;
@@ -63,5 +63,15 @@ module.exports = {
         });
       }
     });
+  },
+
+  saveStaircaseConfiguration: function (path, staircase, callback) {
+    this.saveJSON(path, {
+      color: staircase.color,
+      animationMode: staircase.animationMode,
+      animationModes: staircase.animationModes,
+      workMode: staircase.workMode,
+      workModes: staircase.workModes
+    }, callback);
   }
 };

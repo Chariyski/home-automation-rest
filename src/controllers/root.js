@@ -7,12 +7,12 @@ const rootController = function (req, res) {
   const staircaseConfigJSON = helpers.readJSONSync(staircaseConfigJSONLocation);
 
   res.render('staircase', {
-    title: 'Staircase',
-    color: staircaseConfigJSON._color,
-    animationModes: staircaseConfigJSON._animationModes,
-    animationMode: staircaseConfigJSON._animationMode,
-    workModes: staircaseConfigJSON._workModes,
-    workMode: staircaseConfigJSON._workMode
+    title: 'Home',
+    color: staircaseConfigJSON.color,
+    animationModes: staircaseConfigJSON.animationModes,
+    animationMode: staircaseConfigJSON.animationMode,
+    workModes: staircaseConfigJSON.workModes,
+    workMode: staircaseConfigJSON.workMode
   });
 };
 
