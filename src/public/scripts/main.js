@@ -33,9 +33,11 @@
         request.open('POST', '/staircase');
         request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
         request.send(JSON.stringify({
-          color: document.getElementById('color').value,
-          animationMode: document.getElementById('animation').value,
-          workMode: document.getElementById('mode').value
+          message: {
+            color: document.getElementById('color').value,
+            animationMode: document.getElementById('animation').value,
+            workMode: document.getElementById('mode').value
+          }
         }));
 
       }

@@ -18,7 +18,7 @@ const staircaseController = function () {
   };
 
   const post = function (req, res) {
-    const parameters = req.body;
+    const parameters = req.body && req.body.message;
     let animationMode;
     let workMode;
 
