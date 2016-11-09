@@ -18,12 +18,16 @@ const staircaseController = function () {
   };
 
   const post = function (req, res) {
-    const parameters = req.body && req.body.message;
+    let parameters = req.body && req.body.message;
     let animationMode;
     let workMode;
 
     console.log(parameters);
 
+    if (typeof parameters === 'string') {
+      parameters = JSON.parse(parameters);
+    }
+    
     if (parameters.animationMode) {
       animationMode = parameters.animationMode.trim();
 
