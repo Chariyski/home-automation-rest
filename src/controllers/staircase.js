@@ -6,15 +6,16 @@ const staircaseConfigJSONLocation = helpers.getFullPath('../models/staircase.jso
 const staircaseConfigJSON = helpers.readJSONSync(staircaseConfigJSONLocation);
 const staircaseLight = new StaircaseLight();
 
-staircaseLight.color = staircaseConfigJSON.color || '#ffffff';
 staircaseLight.animationMode = staircaseConfigJSON.animationMode || 'stairByStair';
+staircaseLight.color = staircaseConfigJSON.color || '#ffffff';
+staircaseLight.direction = staircaseConfigJSON.direction || 'bottomToTop';
 staircaseLight.workMode = staircaseConfigJSON.workMode || 'off';
 
 helpers.saveStaircaseConfiguration(staircaseConfigJSONLocation, staircaseLight);
 
 const staircaseController = function () {
   const get = function (req, res) {
-    res.json(staircaseLight);
+    res.json(helpers.readJSONSync(staircaseConfigJSONLocation));
   };
 
   const post = function (req, res) {
@@ -22,7 +23,7 @@ const staircaseController = function () {
     let animationMode;
     let workMode;
 
-    console.log(parameters);
+    console.log(new Date(), parameters);
 
     if (typeof parameters === 'string') {
       parameters = JSON.parse(parameters);
@@ -41,6 +42,10 @@ const staircaseController = function () {
 
     if (parameters.color) {
       staircaseLight.color = parameters.color.trim();
+    }
+
+    if (parameters.direction) {
+      staircaseLight.direction = helpers.RegularFormToCamelCase(parameters.direction);
     }
 
     if (parameters.workMode) {

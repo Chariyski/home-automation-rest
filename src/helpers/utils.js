@@ -67,9 +67,11 @@ module.exports = {
 
   saveStaircaseConfiguration: function (path, staircase, callback) {
     this.saveJSON(path, {
-      color: staircase.color,
       animationMode: staircase.animationMode,
       animationModes: staircase.animationModes,
+      color: staircase.color,
+      direction: staircase.direction,
+      directions: staircase.directions,
       workMode: staircase.workMode,
       workModes: staircase.workModes
     }, callback);
