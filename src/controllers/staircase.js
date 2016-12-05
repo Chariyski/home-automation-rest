@@ -4,12 +4,12 @@ const helpers = require('../helpers/utils');
 const StaircaseLight = require('../modules/staircase-lighting/src/index');
 const staircaseConfigJSONLocation = helpers.getFullPath('../models/staircase.json');
 const staircaseConfigJSON = helpers.readJSONSync(staircaseConfigJSONLocation);
-const staircaseLight = new StaircaseLight();
-
-staircaseLight.animationMode = staircaseConfigJSON.animationMode || 'stairByStair';
-staircaseLight.color = staircaseConfigJSON.color || '#ffffff';
-staircaseLight.direction = staircaseConfigJSON.direction || 'bottomToTop';
-staircaseLight.workMode = staircaseConfigJSON.workMode || 'off';
+const staircaseLight = new StaircaseLight({
+  animationMode: staircaseConfigJSON.animationMode || 'stairByStair',
+  color: staircaseConfigJSON.color || '#ffffff',
+  direction: staircaseConfigJSON.direction || 'bottomToTop',
+  workMode: staircaseConfigJSON.workMode || 'off'
+});
 
 helpers.saveStaircaseConfiguration(staircaseConfigJSONLocation, staircaseLight);
 
