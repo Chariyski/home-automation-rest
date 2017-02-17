@@ -41,7 +41,13 @@ const staircaseController = function () {
     }
 
     if (parameters.color) {
-      staircaseLight.color = parameters.color.trim();
+      // Home-assistant currently is not supporting setting a value to drop down.
+      if (parameters.color === 'wood') {
+        staircaseLight.color = '#ff6464';
+        console.log(staircaseLight.color);
+      } else {
+        staircaseLight.color = parameters.color.trim();
+      }
     }
 
     if (parameters.direction) {
